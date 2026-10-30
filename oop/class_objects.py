@@ -7,5 +7,8 @@ class Car:
         self.model = model
         self.year = year
 
+    def full_name(self):
+        return f"{self.brand} {self.model}"
+
 my_car = Car("Bugatti", "Chiron", 2021)
-print("My car is a " + str(my_car.year) + " " + my_car.brand + " " + my_car.model)
+print("My car is a " + str(my_car.year) + " " + my_car.full_name())
