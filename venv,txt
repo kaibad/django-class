@@ -1,0 +1,16 @@
+sudo apt update
+sudo apt intall python3-venv
+
+
+python3 -m venv <name of env (env generally)>
+
+To activate(windows): env\scripts\activate 
+To activate(mac and linux): source env/bin/activate
+
+To deactivate: deactivate
+
+
+list the packages installed: pip list
+add package in  a requirements.txt file: pip freeze > requirements.txt
+install from requirements.txt: pip instal -r requirements.txt
+
