@@ -1,2 +1,21 @@
-.venv
-env
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Django
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# Environment / secrets
+.env
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
