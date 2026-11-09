@@ -7,5 +7,3 @@ urlpatterns = [
     path('home/',views.home_page ),
     path('contact/',views.contact_page),
 ]
-
-
