@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Update Blog | {{ blog.title }}</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="bg-gray-100 min-h-screen">
+        <div class="max-w-3xl mx-auto px-4 py-12">
+            <!-- Back Button -->
+            <div class="mb-6">
+                <a
+                    href="{% url 'home_page_url' %}"
+                    class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-800 transition"
+                >
+                    ← Back to Blogs
+                </a>
+            </div>
+
+            <!-- Main Card -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+                <!-- Header -->
+                <div class="bg-indigo-600 px-8 py-7">
+                    <h1 class="text-2xl sm:text-3xl font-bold text-white">Update Your Blog</h1>
+
+                    <p class="text-indigo-100 mt-2 text-sm">
+                        Make changes to your article and keep your content fresh.
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <div class="p-6 sm:p-8">
+                    <form method="POST" action="{% url 'update_blog_url' blog.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="blog-id" value="{{ blog.id }}" />
+
+                        <!-- Blog Title -->
+                        <div class="mb-6">
+                            <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Blog Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                value="{{ blog.title }}"
+                                placeholder="Enter your blog title..."
+                                required
+                                class="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 outline-none transition duration-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+                            />
+                        </div>
+
+                        <!-- Blog Content -->
+                        <div class="mb-6">
+                            <label for="content" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Blog Content
+                            </label>
+
+                            <textarea
+                                id="content"
+                                name="content"
+                                rows="12"
+                                placeholder="Write your blog content..."
+                                required
+                                class="w-full border border-gray-300 rounded-xl px-4 py-4 text-gray-700 leading-relaxed outline-none transition duration-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 resize-y"
+                            >
+{{ blog.content }}</textarea
+                            >
+                        </div>
+
+                        <!-- Blog Information -->
+                        <div class="bg-gray-50 rounded-xl border border-gray-200 p-4 mb-7">
+                            <p class="text-xs text-gray-500">Created: {{ blog.created_at|date:"M d, Y" }}</p>
+
+                            <p class="text-xs text-gray-500 mt-2">Last Updated: {{ blog.updated_at|date:"M d, Y" }}</p>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <!-- Cancel -->
+                            <a
+                                href="{% url 'home_page_url' %}"
+                                class="w-full text-center border border-gray-300 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-100 transition duration-300"
+                            >
+                                Cancel
+                            </a>
+
+                            <!-- Update -->
+                            <button
+                                type="submit"
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+                            >
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <p class="text-center text-sm text-gray-400 mt-8">© 2026 My Blog. All rights reserved.</p>
+        </div>
+    </body>
+</html>
